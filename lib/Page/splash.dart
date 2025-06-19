@@ -6,15 +6,15 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-    backgroundColor: Colors.white,
-      body: Center(
-        child: Image(
-          image: AssetImage('media/logo.png'),
-          width: 200,
-          height: 200,
-          fit: BoxFit.contain,
-        )
-      ),
-    );
+      backgroundColor: Colors.white,
+        body: Center(
+          child: Image(
+            image: AssetImage('media/logo.png'),
+            width: 200,
+            height: 200,
+            fit: BoxFit.contain,
+          )
+        ),
+      );
+    }
   }
-}

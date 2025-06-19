@@ -1,4 +1,5 @@
 // lib/login_screen.dart
+import 'package:app_banking/Controller/userController.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -9,6 +10,7 @@ class Register extends StatefulWidget {
 }
 
 class _RegisterState extends State<Register> {
+  final UserController userController = UserController();
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -97,9 +99,20 @@ class _RegisterState extends State<Register> {
               ),
               const SizedBox(height: 24),
               ElevatedButton(
-                onPressed: () {
+                onPressed: () async {
                   if (_formKey.currentState!.validate()) {
-                    // Handle sign in
+                    String email = _emailController.text;
+                    String password = _passwordController.text;
+                    try {
+                      bool result = await userController.login(email, password);
+                      if (result){
+                        print ("LOG THE FUCK IN");
+                      } else {
+                        print ("IDK");
+                      }
+                    } catch (e) {
+                      print (e);
+                    }
                   }
                 },
                 style: ElevatedButton.styleFrom(

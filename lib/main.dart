@@ -1,10 +1,7 @@
-// lib/main.dart
-import 'package:app_banking/Page/onboarding3.dart';
+// lib/bottomnav.dart
 import 'package:flutter/material.dart';
 import 'package:app_banking/Page/splash.dart';
-import 'package:app_banking/Page/onboarding.dart';
-import 'package:app_banking/Page/onboarding2.dart';
-import 'package:app_banking/Page/register.dart';
+import 'package:app_banking/Page/bottomnav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Splash(),
+      home: Bottomnav(),
     );
   }
 }

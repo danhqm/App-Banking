@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'onboarding3.dart';
 
 class Onboarding2 extends StatelessWidget {
   const Onboarding2({super.key});
@@ -53,7 +54,10 @@ class Onboarding2 extends StatelessWidget {
               height: 56,
               child: ElevatedButton(
                 onPressed: () {
-                  // Action goes here
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Onboarding3()),
+                  );
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xFF0066FF),

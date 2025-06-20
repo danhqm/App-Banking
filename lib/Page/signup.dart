@@ -1,15 +1,15 @@
 // lib/login_screen.dart
 import 'package:flutter/material.dart';
-import 'signup.dart';
+import 'register.dart';
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class Signup extends StatefulWidget {
+  const Signup({super.key});
 
   @override
-  State<Register> createState() => _RegisterState();
+  State<Signup> createState() => _SignupState();
 }
 
-class _RegisterState extends State<Register> {
+class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
             children: [
               const SizedBox(height: 34),
               const Text(
-                'Sign In',
+                'Sign Up',
                 style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500, color: Color(0xFF1E1E2D)),
               ),
               const SizedBox(height: 24),
@@ -76,31 +76,41 @@ class _RegisterState extends State<Register> {
                   return null;
                 },
               ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Checkbox(
-                    value: _rememberMe,
-                    onChanged: (value) {
-                      setState(() {
-                        _rememberMe = value!;
-                      });
-                    },
-                  ),
-                  const Text('Remember me'),
-                  const Spacer(),
-                  TextButton(
-                    onPressed: () {
-                      // Handle reset password
-                    },
-                    style: TextButton.styleFrom(
-                      foregroundColor: const Color(0xFF0066FF),
-                    ),
-                    child: const Text('Reset password'),
-                  ),
-                ],
+              const SizedBox(height: 16),
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.person_2_outlined, color: (Color(0xFF1E1E2D)),),
+                  labelText: 'Full Name',
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Colors.white,
+
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
               ),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
+              TextFormField(
+                decoration: const InputDecoration(
+                  prefixIcon: Icon(Icons.phone_in_talk_outlined, color: (Color(0xFF1E1E2D)),),
+                  labelText: 'Phone Number',
+                  border: OutlineInputBorder(),
+                  filled: true,
+                  fillColor: Colors.white,
+
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'Please enter your password';
+                  }
+                  return null;
+                },
+              ),
+              const SizedBox(height: 36),
               ElevatedButton(
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
@@ -112,7 +122,7 @@ class _RegisterState extends State<Register> {
                   backgroundColor: const Color(0xFF0066FF),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
-                    ),
+                  ),
                   foregroundColor: Colors.white,
                   textStyle: const TextStyle(
                     fontSize: 14,
@@ -120,14 +130,7 @@ class _RegisterState extends State<Register> {
                     fontFamily: 'Inter',
                   ),
                 ),
-                child: const Text('Sign In'),
-              ),
-              const SizedBox(height: 32),
-              const Center(
-                child: Text(
-                  'or continue with',
-                  style: TextStyle(color: Colors.grey),
-                ),
+                child: const Text('Sign Up'),
               ),
               const SizedBox(height: 16),
               // Add social login buttons here if needed
@@ -135,18 +138,18 @@ class _RegisterState extends State<Register> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text("Don't have an account?"),
+                  const Text("Already have an account?"),
                   TextButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => const Signup()),
+                        MaterialPageRoute(builder: (context) => const Register()),
                       );
                     },
                     style: TextButton.styleFrom(
                       foregroundColor: const Color(0xFF0066FF),
                     ),
-                    child: const Text('Sign up'),
+                    child: const Text('Sign In'),
                   ),
                 ],
               ),

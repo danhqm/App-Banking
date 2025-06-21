@@ -1,8 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 
-class Statistics extends StatelessWidget {
+
+class Statistics extends StatefulWidget {
   const Statistics({super.key});
+
+  @override
+  State<Statistics> createState() => _StatisticsState();
+}
+
+class _StatisticsState extends State<Statistics> {
+  int selectedMonth = 3;
+
+  final Map<int, List<FlSpot>> monthData = {
+    0: [FlSpot(0, 2), FlSpot(1, 3), FlSpot(2, 2.2), FlSpot(3, 3), FlSpot(4, 2.8), FlSpot(5, 3.5)], // Oct
+    1: [FlSpot(0, 1.8), FlSpot(1, 2.2), FlSpot(2, 2.5), FlSpot(3, 2.3), FlSpot(4, 2.9), FlSpot(5, 3.2)], // Nov
+    2: [FlSpot(0, 2.5), FlSpot(1, 3.1), FlSpot(2, 2.8), FlSpot(3, 3.4), FlSpot(4, 3.6), FlSpot(5, 3.9)], // Dec
+    3: [FlSpot(0, 2), FlSpot(1, 3), FlSpot(2, 2.2), FlSpot(3, 4), FlSpot(4, 3.1), FlSpot(5, 5)],         // Jan
+    4: [FlSpot(0, 2.1), FlSpot(1, 3.5), FlSpot(2, 3.0), FlSpot(3, 4.2), FlSpot(4, 4.5), FlSpot(5, 4.9)], // Feb
+    5: [FlSpot(0, 1.5), FlSpot(1, 2.8), FlSpot(2, 3.2), FlSpot(3, 3.7), FlSpot(4, 4.1), FlSpot(5, 4.3)], // Mar
+  };
+
+  final List<String> months = ['Oct', 'Nov', 'Dec', 'Jan', 'Feb', 'Mar'];
+
+  final Map<int, double> monthBalances = {
+    0: 5230.00, // Oct
+    1: 6025.50, // Nov
+    2: 7342.10, // Dec
+    3: 8545.00, // Jan
+    4: 9300.75, // Feb
+    5: 10120.00, // Mar
+  };
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,29 +89,93 @@ class Statistics extends StatelessWidget {
             ],
           ),
         ),
-
-        // Card Image
-        const Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Image(
-            image: AssetImage('media/Card.png'),
-            fit: BoxFit.contain,
-          ),
-        ),
-
-
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          padding: const EdgeInsets.symmetric(horizontal: 35.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              buildActionItem(Icons.arrow_upward_sharp, 'Send'),
-              buildActionItem(Icons.arrow_downward_sharp, 'Receive'),
-              buildActionItem(Icons.monetization_on_outlined, 'Loan'),
-              buildActionItem(Icons.cloud_upload_outlined, 'Topup'),
+              SizedBox(
+                height: 40,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: months.length,
+                  itemBuilder: (context, index) {
+                    bool isSelected = index == selectedMonth;
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          selectedMonth = index;
+                        });
+                      },
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                        decoration: BoxDecoration(
+                          color: isSelected ? Color(0xFF0066FF) : Colors.transparent,
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: Text(
+                          months[index],
+                          style: TextStyle(
+                            color: isSelected ? Colors.white : Colors.black,
+                            fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                'Current Balance',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey,
+                ),
+              ),
+              const SizedBox(height: 5),
+              Text(
+                '\$${monthBalances[selectedMonth]!.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 28,
+                  fontWeight: FontWeight.bold,
+                  color: Color(0xFF1E1E2D),
+                ),
+              ),
+
+              const SizedBox(height: 30),
+              AspectRatio(
+                aspectRatio: 1.6,
+                child: LineChart(
+                  LineChartData(
+                    gridData: FlGridData(show: false),
+                    borderData: FlBorderData(show: false),
+                    titlesData: FlTitlesData(show: false),
+                    lineBarsData: [
+                      LineChartBarData(
+                        spots: monthData[selectedMonth]!,
+                        isCurved: true,
+                        barWidth: 4,
+                        isStrokeCapRound: true,
+                        color: Color(0xFF0066FF),
+                        dotData: FlDotData(
+                          show: true,
+                          checkToShowDot: (spot, _) => true,
+                          getDotPainter: (spot, percent, barData, index) =>
+                              FlDotCirclePainter(radius: 5, color: Colors.white, strokeColor: Color(0xFF0066FF), strokeWidth: 3),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
+
+
+
         const SizedBox(height: 30),
 
         const Padding(

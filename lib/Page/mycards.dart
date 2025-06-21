@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_sliders/sliders.dart';
 
-class Mycards extends StatelessWidget {
+class Mycards extends StatefulWidget {
   const Mycards({super.key});
+
+  @override
+  State<Mycards> createState() => _MycardsState();
+}
+
+class _MycardsState extends State<Mycards> {
+  double _sliderValue = 8545.0;
 
   @override
   Widget build(BuildContext context) {
@@ -223,6 +231,40 @@ class Mycards extends StatelessWidget {
             ],
           ),
         ),
+        // Put this at the end of your Column's children:
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Amount: \$${_sliderValue.toStringAsFixed(2)}',
+                style: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+              const SizedBox(height: 15),
+              SfSlider(
+                min: 0.0,
+                max: 10000.0,
+                value: _sliderValue,
+                interval: 3000,
+                showLabels: true,
+                stepSize: 1,
+                enableTooltip: false,
+                activeColor: Colors.blueAccent,
+                inactiveColor: Colors.grey[300],
+                onChanged: (dynamic newValue) {
+                  setState(() {
+                    _sliderValue = newValue;
+                  });
+                },
+              ),
+            ],
+          ),
+        ),
+
       ],
     );
   }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Mycards extends StatelessWidget {
   const Mycards({super.key});
 
@@ -213,6 +212,17 @@ class Mycards extends StatelessWidget {
           ),
         ),
 
+        SizedBox(height: 15),
+
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Text('Monthly spending limit', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
       ],
     );
   }

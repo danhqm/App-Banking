@@ -15,6 +15,7 @@ class Home extends StatelessWidget {
             children: [
               const CircleAvatar(
                 radius: 24,
+                // Gambar profile picture
                 backgroundImage: AssetImage('media/logo.png'),
               ),
               const SizedBox(width: 20),
@@ -44,7 +45,7 @@ class Home extends StatelessWidget {
               Container(
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(0xFFF5F5F5),
+                  color: Color(0xFFD3D3D3),
                 ),
                 padding: const EdgeInsets.all(10),
                 child: const Icon(
@@ -80,7 +81,7 @@ class Home extends StatelessWidget {
         ),
         const SizedBox(height: 30),
 
-        Padding(
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,12 +165,12 @@ class Home extends StatelessWidget {
                 ),
               ),
               Container(
-                child: Text('-65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+                child: Text('- 65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
               ),
             ],
           ),
         ),
-        Padding(
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -183,7 +184,7 @@ class Home extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Grocery',
+                      'Fund Transfer',
                       style: TextStyle(
                         fontSize: 16,
                         color: Color(0xFF1E1E2D),
@@ -191,7 +192,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Foods',
+                      'Transfer',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -201,19 +202,17 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Text('-65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
-              ),
+              Text('+ 100.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
             ],
           ),
         ),
-        Padding(
+        const Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const Icon(
-                Icons.trolley,
+                Icons.nightlife_outlined,
               ),
               const SizedBox(width: 20),
               const Expanded(
@@ -221,7 +220,7 @@ class Home extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
                     Text(
-                      'Grocery',
+                      'Concert',
                       style: TextStyle(
                         fontSize: 16,
                         color: Color(0xFF1E1E2D),
@@ -229,7 +228,7 @@ class Home extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      'Foods',
+                      'Entertainment',
                       style: TextStyle(
                         fontSize: 12,
                         fontWeight: FontWeight.normal,
@@ -239,9 +238,7 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Text('-65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
-              ),
+              Text('- 150.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
             ],
           ),
         ),
@@ -259,7 +256,7 @@ class Home extends StatelessWidget {
           height: 64,
           decoration: const BoxDecoration(
             shape: BoxShape.circle,
-            color: Color(0xFFF5F5F5),
+            color: Color(0xFFD3D3D3),
           ),
           child: Icon(
             icon,

@@ -253,7 +253,7 @@ class _MycardsState extends State<Mycards> {
                 showLabels: true,
                 stepSize: 1,
                 enableTooltip: false,
-                activeColor: Colors.blueAccent,
+                activeColor: Color(0xFF0066FF),
                 inactiveColor: Colors.grey[300],
                 onChanged: (dynamic newValue) {
                   setState(() {

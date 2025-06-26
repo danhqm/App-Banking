@@ -1,7 +1,6 @@
-// lib/bottomnav.dart
 import 'package:flutter/material.dart';
-import 'package:app_banking/Page/splash.dart';
 import 'package:app_banking/Page/bottomnav.dart';
+import 'package:app_banking/Page/profile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Bottomnav(),
+      home: Profile(),
     );
   }
 }

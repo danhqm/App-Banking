@@ -81,29 +81,57 @@ class Home extends StatelessWidget {
         ),
         const SizedBox(height: 30),
 
-        const Padding(
+        Padding(
           padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Text('Transaction', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
-              Text('See All', style: TextStyle(fontSize: 14, color: Color(0xFF0066FF), fontWeight: FontWeight.w500))
+              const Text('Transaction', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+              TextButton(
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    isScrollControlled: true,
+                    backgroundColor: Colors.white,
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                    ),
+                    builder: (context) => const FractionallySizedBox(
+                      heightFactor: 0.9,
+                      child: TransactionHistoryModal(),
+                    ),
+                  );
+                },
+                style: const ButtonStyle(
+                  padding: WidgetStatePropertyAll<EdgeInsets>(EdgeInsets.zero),
+                  minimumSize: WidgetStatePropertyAll<Size>(Size(0, 0)),
+                  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                ),
+                child: const Text(
+                  'See All',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xFF0066FF),
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
 
         const SizedBox(height: 30),
 
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.apple
               ),
-              const SizedBox(width: 20),
-              const Expanded(
+              SizedBox(width: 20),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -126,22 +154,20 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
-              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
             ],
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                   Icons.trolley,
               ),
-              const SizedBox(width: 20),
-              const Expanded(
+              SizedBox(width: 20),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -164,22 +190,20 @@ class Home extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                child: Text('- 65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
-              ),
+              Text('- 65.50', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
             ],
           ),
         ),
         const Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.trolley,
               ),
-              const SizedBox(width: 20),
-              const Expanded(
+              SizedBox(width: 20),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -207,15 +231,15 @@ class Home extends StatelessWidget {
           ),
         ),
         const Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          padding: EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Icon(
+              Icon(
                 Icons.nightlife_outlined,
               ),
-              const SizedBox(width: 20),
-              const Expanded(
+              SizedBox(width: 20),
+              Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -266,6 +290,390 @@ class Home extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         Text(label),
+      ],
+    );
+  }
+}
+
+class TransactionHistoryModal extends StatelessWidget {
+  const TransactionHistoryModal({super.key});
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
+        SizedBox(height: 10),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 35.0, vertical: 12),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const Icon(
+                  Icons.apple
+              ),
+              const SizedBox(width: 20),
+              const Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Apple Store',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF1E1E2D),
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Text(
+                      'Entertainment',
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.normal,
+                        color: Color(0xFFA2A2A7),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Text('- 88.00', style: TextStyle(fontSize: 18, color: Color(0xFF1E1E2D), fontWeight: FontWeight.w500)),
+            ],
+          ),
+        ),
       ],
     );
   }

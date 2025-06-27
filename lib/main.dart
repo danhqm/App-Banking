@@ -1,3 +1,4 @@
+import 'package:app_banking/Page/changepassword.dart';
 import 'package:app_banking/Page/sendmoney.dart';
 import 'package:flutter/material.dart';
 import 'package:app_banking/Page/bottomnav.dart';
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Sendmoney(),
+      home: Password(),
     );
   }
 }

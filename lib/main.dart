@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:app_banking/Page/bottomnav.dart';
-import 'package:app_banking/Page/profile.dart';
+import 'package:app_banking/Page/editprofile.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: Profile(),
+      home: Editprofile(),
     );
   }
 }

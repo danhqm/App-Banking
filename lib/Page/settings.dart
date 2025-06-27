@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'profile.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -114,12 +115,19 @@ class Settings extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    const SizedBox(width: 20),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 20,
-                      color: Color(0xFF7E848D),
-                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const Profile()),
+                        );
+                      },
+                      child: const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20,
+                        color: Color(0xFF7E848D),
+                      ),
+                    )
                   ],
                 ),
                 const SizedBox(height: 5),

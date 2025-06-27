@@ -1,6 +1,6 @@
+import 'package:app_banking/Page/sendmoney.dart';
 import 'package:flutter/material.dart';
 import 'package:app_banking/Page/bottomnav.dart';
-import 'package:app_banking/Page/sendmoney.dart';
 
 void main() {
   runApp(const MyApp());

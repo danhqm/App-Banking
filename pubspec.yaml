@@ -69,6 +69,12 @@ flutter:
      - media/onboarding2.png
      - media/onboarding3.png
      - media/Card.png
+     - media/USA.png
+     - media/Australia.png
+     - media/France.png
+     - media/Spain.png
+     - media/Armenia.png
+     - media/Vietnam.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

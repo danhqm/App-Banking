@@ -8,7 +8,7 @@ class Sendmoney extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Padding(
             padding: const EdgeInsets.all(30.0),
@@ -183,6 +183,31 @@ class Sendmoney extends StatelessWidget {
                     ],
                   )
                 ]
+              ),
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.only(top: 52),
+            width: 335,
+            height: 56,
+            child: ElevatedButton(
+              onPressed: () {
+
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: const Color(0xFF0066FF),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+              child: const Text(
+                'Send',
+                style: TextStyle(
+                  fontFamily: 'Poppins',
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),

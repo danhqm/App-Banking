@@ -1,5 +1,7 @@
+import 'package:app_banking/Page/changepassword.dart';
 import 'package:flutter/material.dart';
 import 'profile.dart';
+import 'language.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -71,33 +73,42 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Text(
-                      'Language',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF1E1E2D),
-                        fontWeight: FontWeight.normal,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Language()),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        'Language',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFF1E1E2D),
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                    const Spacer(),
-                    Text(
-                      'English',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFFA2A2A7),
-                        fontWeight: FontWeight.normal,
-                      )
-                    ),
-                    const SizedBox(width: 20),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 20,
-                      color: Color(0xFF7E848D),
-                    ),
-                  ],
+                      const Spacer(),
+                      Text(
+                        'English',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFFA2A2A7),
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20,
+                        color: Color(0xFF7E848D),
+                      ),
+                    ],
+                  ),
                 ),
+
                 const SizedBox(height: 5),
                 const Divider(
                   color: Color(0xFFD3D3D3),
@@ -178,24 +189,32 @@ class Settings extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  children: [
-                    Text(
-                      'Change Password',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF1E1E2D),
-                        fontWeight: FontWeight.normal,
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Password()),
+                    );
+                  },
+                  child: Row(
+                    children: [
+                      Text(
+                        'Change Password',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Color(0xFF1E1E2D),
+                          fontWeight: FontWeight.normal,
+                        ),
                       ),
-                    ),
-                    const Spacer(),
-                    const SizedBox(width: 20),
-                    const Icon(
-                      Icons.arrow_forward_ios_outlined,
-                      size: 20,
-                      color: Color(0xFF7E848D),
-                    ),
-                  ],
+                      const Spacer(),
+                      const SizedBox(width: 20),
+                      const Icon(
+                        Icons.arrow_forward_ios_outlined,
+                        size: 20,
+                        color: Color(0xFF7E848D),
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 5),
                 const Divider(

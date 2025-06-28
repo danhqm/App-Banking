@@ -2,6 +2,7 @@
 import 'package:app_banking/Controller/userController.dart';
 import 'package:flutter/material.dart';
 import 'signup.dart';
+import 'bottomnav.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key});
@@ -105,6 +106,10 @@ class _RegisterState extends State<Register> {
               const SizedBox(height: 24),
               ElevatedButton(
                 onPressed: () async {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Bottomnav()),
+                  );
                   if (_formKey.currentState!.validate()) {
                     String email = _emailController.text;
                     String password = _passwordController.text;

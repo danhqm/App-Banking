@@ -1,3 +1,5 @@
+import 'package:app_banking/Page/requestmoney.dart';
+import 'package:app_banking/Page/sendmoney.dart';
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -72,10 +74,14 @@ class Home extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buildActionItem(Icons.arrow_upward_sharp, 'Send'),
-              buildActionItem(Icons.arrow_downward_sharp, 'Receive'),
-              buildActionItem(Icons.monetization_on_outlined, 'Loan'),
-              buildActionItem(Icons.cloud_upload_outlined, 'Topup'),
+              buildActionItem(Icons.arrow_upward_sharp, 'Send', onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Sendmoney()));
+              }),
+              buildActionItem(Icons.arrow_downward_sharp, 'Receive', onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => Requestmoney()));
+              }),
+              buildActionItem(Icons.monetization_on_outlined, 'Loan'), // no onTap
+              buildActionItem(Icons.cloud_upload_outlined, 'Topup'),   // no onTap
             ],
           ),
         ),
@@ -271,26 +277,29 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget buildActionItem(IconData icon, String label) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Container(
-          width: 64,
-          height: 64,
-          decoration: const BoxDecoration(
-            shape: BoxShape.circle,
-            color: Color(0xFFD3D3D3),
+  Widget buildActionItem(IconData icon, String label, {VoidCallback? onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Color(0xFFD3D3D3),
+            ),
+            child: Icon(
+              icon,
+              size: 30,
+              color: Color(0xFF1E1E2D),
+            ),
           ),
-          child: Icon(
-            icon,
-            size: 30,
-            color: Color(0xFF1E1E2D),
-          ),
-        ),
-        const SizedBox(height: 8),
-        Text(label),
-      ],
+          const SizedBox(height: 8),
+          Text(label),
+        ],
+      ),
     );
   }
 }
